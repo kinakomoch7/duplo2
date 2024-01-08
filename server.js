@@ -1,6 +1,10 @@
-import express from 'express';
+import express, { Router } from "express";
+import serverless from "serverless-http";
 import mysql from "mysql2";
 import cors from "cors";
+
+const api = express();
+const router = Router();
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -9,14 +13,10 @@ const connection = mysql.createConnection({
   database: 'duplo',
 });
 
-
-const app = express();
-const port = 3000;
-
-app.use(cors({ origin: "http://localhost:5173" }));
+api.use(cors({ origin: "http://localhost:5173" }));
 
 
-app.get("/", (req, res) => {
+router.get("/getUser", (req, res) => {
   const email = req.query.mail;
   
   const sql = `SELECT * FROM user WHERE mail = '${email}'`;
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get('/get', (req, res) => {
+router.get("/getPayment", (req, res) => {
   const id = req.query.id;
   const sql = `SELECT * FROM PAYMENT WHERE id = ${id}`;
 
@@ -42,13 +42,12 @@ app.get('/get', (req, res) => {
   });
 });
 
-
-app.get('/add', (req, res)=> {
+router.get("/addPayment", (req, res)=> {
   const id = req.query.id;
   const note = req.query.note;
   const money = req.query.money;
 
-  const sql = `INSERT INTO PAYMENT(id, note, money) VALUES(${id}, ${note}, ${money})`
+  const sql = `INSERT INTO PAYMENT(id, note, money) VALUES(${id}, '${note}', ${money})`;
 
   connection.query(sql, (error, result) => {
     if (error) {
@@ -57,9 +56,8 @@ app.get('/add', (req, res)=> {
       res.status(200).json(result);
     }
   });
-})
-
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
+
+api.use("/api", router);
+
+export const handler = serverless(api);
