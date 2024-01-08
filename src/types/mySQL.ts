@@ -8,7 +8,7 @@ export type UserTableType = {
 }
 
 export type PaymentTableType = {
-  id: number;
+  id?: number;
   money: number;
   note: string;
   timeStamp: string;

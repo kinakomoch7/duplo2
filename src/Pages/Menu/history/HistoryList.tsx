@@ -3,9 +3,14 @@ import { BLACK } from "../../../common/style"
 import { HistoryContent } from "./HistoryContent";
 import { PaymentTableType } from "../../../types/mySQL";
 
+type Props = {
+  payments: PaymentTableType[]
+}
 
-export const HistoryList = (payments:PaymentTableType[]) => {
 
+export const HistoryList = (props: Props) => {
+
+  const { payments } = props;
   const TEST_ARRAY = [1, 2, 3, 4, 5, 7, 8];
 
   console.log(payments)

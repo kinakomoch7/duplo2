@@ -8,13 +8,18 @@ import { AmountDataType } from "../../types/amount";
 
 export const Menu = () => {
 
+  const id = useContext(userContext)?.id;
+
   const [amountData, setAmountData] = useState<AmountDataType>({
     myAmount: 0,
     partnerAmount: 0
   });
-  const [payments, setPayments] = useState<PaymentTableType[]>();
-
-  const id = useContext(userContext)?.id;
+  const [payments, setPayments] = useState<PaymentTableType[]>([{
+    id: id,
+    money: 0,
+    note: '',
+    timeStamp: String(new Date().getTime)
+  }]);
 
 
   useEffect(() => {
