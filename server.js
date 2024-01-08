@@ -1,7 +1,6 @@
 import express, { Router } from "express";
 import serverless from "serverless-http";
 import mysql from "mysql2";
-import cors from "cors";
 
 const api = express();
 const router = Router();
@@ -13,7 +12,6 @@ const connection = mysql.createConnection({
   database: 'duplo',
 });
 
-api.use(cors({ origin: "http://localhost:5173" }));
 
 
 router.get("/getUser", (req, res) => {

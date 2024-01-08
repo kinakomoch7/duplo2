@@ -23,7 +23,8 @@ export const Menu = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/get?id=${id}`)
+    const apiUrl = "http://localhost:3000";
+    fetch(`${apiUrl}/get?id=${id}`)
       .then(response => response.json())
       .then((data:PaymentTableType[]) => {
         setAmountData(CalcAmount(data));
