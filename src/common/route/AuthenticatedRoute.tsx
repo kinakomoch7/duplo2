@@ -16,7 +16,6 @@ export const AuthenticatedRoute = ({ mail }: { mail: string | null }) => {
 
   const [user, setUser] = useState<User|null>(null);
 
-  console.log(process.env.REACT_APP_API_BASE_URL)
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
