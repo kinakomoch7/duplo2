@@ -20,7 +20,7 @@ export const AuthenticatedRoute = ({ mail }: { mail: string | null }) => {
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_BASE_URL;
     console.log(apiUrl)
-    axios.get(`${apiUrl}/?mail=${mail}`).then((response) =>{
+    axios.get(`${apiUrl}/getUser?mail=${mail}`).then((response) =>{
       console.log(response.data[0].id)
       setUser(response.data[0])
     })
