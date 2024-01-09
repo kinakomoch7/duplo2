@@ -56,6 +56,6 @@ router.get("/addPayment", (req, res)=> {
   });
 });
 
-api.use("/api/", router);
+api.use("/.netlify/functions/api/", router);
 
 export const handler = serverless(api);
