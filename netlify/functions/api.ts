@@ -12,10 +12,13 @@ const connection = mysql.createConnection({
   database: 'duplo',
 });
 
+console.log(connection);
+
 
 
 router.get("/getUser", (req, res) => {
   const email = req.query.mail;
+  console.log(email);
   
   const sql = `SELECT * FROM user WHERE mail = '${email}'`;
   connection.query(sql, (error, result) => {

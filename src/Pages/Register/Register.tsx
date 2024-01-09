@@ -29,7 +29,8 @@ export const Register = () => {
   const onSubmitEdit = () => {
     const money = isMyself ? amount : -amount;
 
-    fetch(`http://localhost:3000/add?id=${id}&money=${money}&note='${note}'`)
+    const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    fetch(`${apiUrl}/add?id=${id}&money=${money}&note='${note}'`)
       .then(response => response.json())
       .then(data => {
         console.log('data:', data);

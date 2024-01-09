@@ -16,7 +16,8 @@ export const Home = () => {
   console.log(id)
 
   useEffect(() => {
-    fetch(`http://localhost:8888/getPayment?id=${id}`)
+    const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    fetch(`${apiUrl}/getPayment?id=${id}`)
       .then(response => response.json())
       .then((data:PaymentTableType[]) => {
 
