@@ -13,8 +13,10 @@ export const Home = () => {
     partnerAmount: 0,
   });
 
+  console.log(id)
+
   useEffect(() => {
-    fetch(`http://localhost:3000/get?id=${id}`)
+    fetch(`http://localhost:8888/getPayment?id=${id}`)
       .then(response => response.json())
       .then((data:PaymentTableType[]) => {
 

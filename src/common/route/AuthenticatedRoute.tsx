@@ -16,10 +16,8 @@ export const AuthenticatedRoute = ({ mail }: { mail: string | null }) => {
 
   const [user, setUser] = useState<User|null>(null);
 
-  console.log(process.env)
-
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
+    const apiUrl = import.meta.env.VITE_API_BASE_URL;
     axios.get(`${apiUrl}/getUser?mail=${mail}`).then((response) =>{
       console.log(response.data[0].id)
       setUser(response.data[0])
