@@ -31,7 +31,7 @@ app.get("/getUser", (req, res) => {
 
 app.get('/getPayment', (req, res) => {
   const id = req.query.id;
-  const sql = `SELECT * FROM PAYMENT WHERE id = ${id}`;
+  const sql = `SELECT * FROM PAYMENT WHERE id = ${id} ORDER BY timeStamp DESC`;
 
   connection.query(sql, (error, result) => {
     if (error) {
@@ -58,6 +58,36 @@ app.get('/addPayment', (req, res)=> {
     }
   });
 })
+
+app.get('/deletePayment', (req, res) => {
+  const timeStamp = req.query.timeStamp;
+  console.log(timeStamp);
+
+  const sql = `DELETE FROM PAYMENT WHERE timeStamp = '${timeStamp}'`;
+
+  connection.query(sql, (error) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json({ message: 'Payment deleted' });
+    }
+  });
+});
+
+app.get('/updatePartnerName', (req, res) => {
+  const id = req.query.id;
+  const partnerName = req.query.partnerName;
+
+  const sql = `UPDATE user SET partnerName = '${partnerName}' WHERE id = ${id}`;
+
+  connection.query(sql, (error) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json({ message: 'Partner name updated' });
+    }
+  });
+});
 
 
 app.listen(port, () => {

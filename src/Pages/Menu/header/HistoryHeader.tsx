@@ -15,7 +15,7 @@ export const HistoryHeader = (props:Props) => {
 
   const { difference } = props;
 
-  const formattedMoney = MoneyToJPY(Math.abs(difference));
+  const formattedMoney = MoneyToJPY((difference));
 
   const userName = useContext(userContext)?.name;
 
@@ -24,7 +24,7 @@ export const HistoryHeader = (props:Props) => {
       <div style={{ height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-evenly' }}>
         <Typography sx={{ fontSize:20, fontWeight:'bold', color:BLACK }}>履歴</Typography>
         <NTypo fontSize={30}>{userName}</NTypo>
-        {difference > 0 ? <NTypo fontSize={30}>+{formattedMoney}円</NTypo> : <NTypo>{formattedMoney}円</NTypo>}
+        {difference > 0 ? <NTypo fontSize={30}>+{formattedMoney}円</NTypo> : <NTypo fontSize={30}>{formattedMoney}円</NTypo>}
       </div>
     </NBox>
   )

@@ -5,22 +5,20 @@ import { PaymentTableType } from "../../../types/mySQL";
 
 type Props = {
   payments: PaymentTableType[]
+  onDelete: (timeStamp: string) => void;
 }
 
 
 export const HistoryList = (props: Props) => {
 
-  const { payments } = props;
-  const TEST_ARRAY = [1, 2, 3, 4, 5, 7, 8];
-
-  console.log(payments)
+  const { payments, onDelete } = props;
 
   return (
     <div>
       <Typography sx={{ fontWeight:'bold', color:BLACK, fontSize:13 }} >支払い履歴</Typography>
       <div style={{ display:'flex', flexDirection:'column', alignItems:'center', maxHeight:'43vh', overflow:'auto'}}>
-        {TEST_ARRAY.map((item) => {
-          return <HistoryContent key={item}/>;
+        {payments.map((item) => {
+          return <HistoryContent payment={item} key={item.timeStamp} onDelete={onDelete}/>;
         })}
       </div>
     </div>

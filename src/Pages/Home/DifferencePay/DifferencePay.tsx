@@ -28,11 +28,11 @@ export const DifferencePay = (props:Props) => {
       <div css={divStyles.container}>
         <div css={divStyles.userDisplay} >
           <NTypo style={{ fontSize:20 }} >{user?.name}</NTypo>
-          { money>0 ? <ArrowRightAltIcon sx={muiStyles.icon} /> : <WestIcon sx={muiStyles.icon}/>}
+          { money<0 ? <ArrowRightAltIcon sx={muiStyles.icon} /> : <WestIcon sx={muiStyles.icon}/>}
           <NTypo style={{ fontSize:20 }} >{user?.partnerName}</NTypo>
         </div>
         <div>
-          <NTypo style={{ fontSize:30 }}>¥{formattedMony} 円支払う</NTypo>
+          <NTypo style={{ fontSize:30 }}>¥{formattedMony} 円奢る</NTypo>
         </div>
       </div>
     </NBox>

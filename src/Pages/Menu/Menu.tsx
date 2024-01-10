@@ -5,6 +5,7 @@ import { userContext } from "../../common/route/Context";
 import { PaymentTableType } from "../../types/mySQL";
 import { CalcAmount } from "../../features/mysql/calcAmount";
 import { AmountDataType } from "../../types/amount";
+import axios from "axios";
 
 export const Menu = () => {
 
@@ -36,11 +37,25 @@ export const Menu = () => {
     );
   },[])
 
+  const handlePaymentDelete = async (timeStamp: string) => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
+      console.log(timeStamp);
+      await axios.get(`${apiUrl}/deletePayment?timeStamp=${timeStamp}`);
+ 
+      const response = await fetch(`${apiUrl}/getPayment?id=${id}`);
+      const data: PaymentTableType[] = await response.json();
+      setAmountData(CalcAmount(data));
+      setPayments(data);
+    } catch (error) {
+      console.error('message:', error);
+    }
+  };
 
   return (
     <div>
       <HistoryHeader difference={amountData?.myAmount-amountData?.partnerAmount} />
-      <HistoryList payments={payments}/>
+      <HistoryList payments={payments} onDelete={handlePaymentDelete}/>
     </div>
   );
 };

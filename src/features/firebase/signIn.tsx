@@ -2,6 +2,8 @@ import { auth, provider } from "./firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInWithRedirect } from "firebase/auth";
 import { AuthenticatedRoute } from "../../common/route/AuthenticatedRoute";
+import { NButton } from "../../common/NButton";
+import { BLOOD_ORANGE } from "../../common/style";
 
 export const SignIn = () => {
   const [user] = useAuthState(auth);
@@ -15,6 +17,6 @@ export const SignIn = () => {
   if (user) {
     return <AuthenticatedRoute mail={user.email} />
   } else {
-    return <button onClick={signIn}>サインイン</button>;
+    return <NButton onClick={signIn} sx={{ backgroundColor:BLOOD_ORANGE }}>SignIn & SignUp</NButton>;
   }
 }
