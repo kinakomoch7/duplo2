@@ -89,6 +89,22 @@ app.get('/updatePartnerName', (req, res) => {
   });
 });
 
+app.get('/registerUser', (req, res) => {
+  const name = req.query.name;
+  const email = req.query.email;
+  const icon = req.query.icon;
+
+  const sql = `INSERT INTO user(name, mail, icon) VALUES('${name}', '${email}', '${icon}')`;
+
+  connection.query(sql, (error) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json({ message: 'User registered' });
+    }
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
