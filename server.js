@@ -3,9 +3,9 @@ import mysql from "mysql2";
 import cors from "cors";
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: 'root',
-  password: 'Gurimu14',
+  host: 'localhost',
+  user: 'dbuser',
+  password: '0319',
   database: 'duplo',
 });
 

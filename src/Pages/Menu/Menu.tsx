@@ -24,7 +24,7 @@ export const Menu = () => {
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_BASE_URL;
-   fetch(`${apiUrl}/get?id=${id}`)
+   fetch(`${apiUrl}/getPayment?id=${id}`)
       .then(response => response.json())
       .then((data:PaymentTableType[]) => {
         setAmountData(CalcAmount(data));
