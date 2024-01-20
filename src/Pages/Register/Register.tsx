@@ -30,7 +30,7 @@ export const Register = () => {
     const money = isMyself ? amount : -amount;
 
     const apiUrl = import.meta.env.VITE_API_BASE_URL;
-    fetch(`${apiUrl}/addPayment?id=${id}&money=${money}&note='${note}'`)
+    fetch(`${apiUrl}/addPayment?id=${id}&note=${note}&money=${money}`)
       .then(response => response.json())
       .then(data => {
         console.log('data:', data);

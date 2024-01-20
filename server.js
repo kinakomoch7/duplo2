@@ -48,7 +48,9 @@ app.get('/addPayment', (req, res)=> {
   const note = req.query.note;
   const money = req.query.money;
 
-  const sql = `INSERT INTO PAYMENT(id, note, money) VALUES(?, ?, ?)`
+  const partnerId = 1
+
+  const sql = `INSERT INTO PAYMENT(id,  note, money, partnerId) VALUES(?, ?, ?, ${partnerId})`
 
   connection.query(sql, [id, note, money], (error, result) => {
     if (error) {
