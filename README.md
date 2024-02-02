@@ -28,3 +28,13 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## 使用技術
+
+
+<img src="https://img.shields.io/badge/-React-000000.svg?logo=react&style=flat">
+<img src="https://img.shields.io/badge/-TypeScript-007ACC.svg?logo=typescript&style=flat">
+<img src="https://img.shields.io/badge/-MySQL-white.svg?logo=mysql&style=flat">
+<img src="https://img.shields.io/badge/-MUI-white.svg?logo=mui&style=flat">
+<img src="https://img.shields.io/badge/-express-green.svg?logo=express&style=flat">
+<img src="https://img.shields.io/badge/-node.js-black.svg?logo=node.js&style=flat">
