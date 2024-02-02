@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 const app = express();
 const port = 3000;
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://duplo2.netlify.app" }));
 
 
 app.get("/getUser", (req, res) => {
